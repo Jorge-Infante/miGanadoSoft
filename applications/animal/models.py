@@ -14,6 +14,11 @@ class Breed(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE, null=False)
     def __str__(self) -> str:
         return str(self.id) + self.name
+    
+class Status(models.Model):
+    name = models.CharField(max_length=50)
+    def __str__(self) -> str:
+        return str(self.id) + self.name
 
 class Animal(models.Model):
     name = models.CharField(max_length=50)
@@ -21,7 +26,8 @@ class Animal(models.Model):
     weight = models.PositiveIntegerField()
     species = models.ForeignKey(Species, on_delete=models.CASCADE, null=False)
     breed = models.ForeignKey(Breed, on_delete=models.CASCADE, null=False)
-    treatment = models.ManyToManyField(Treatment, blank=True, null=True)
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, null=False)
+    treatment = models.ManyToManyField(Treatment, blank=True)
     file = models.FileField(upload_to='uploads/',null=True, blank=True)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     def __str__(self) -> str:

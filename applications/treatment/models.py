@@ -12,7 +12,7 @@ class Medicine(models.Model):
 
 class Treatment(models.Model):
     name = models.CharField(max_length=50)
-    medicine = models.ManyToManyField(Medicine, blank=True, null=True)
+    medicine = models.ManyToManyField(Medicine, blank=True)
     class Meta:
         verbose_name = ''
         verbose_name_plural = 'Tratamientos'
