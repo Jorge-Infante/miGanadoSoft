@@ -25,9 +25,19 @@ SECRET_KEY = 'django-insecure-s9li+$7nj=^qknxib7d_cu+-7(sqhv!r&qik!l%h43y&jlw=+9
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["213.199.42.70", "*", "http://localhost:8080"]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    'http://localhost:8080',
+]
+CORS_ORIGIN_WHITELIST = (
+'http://localhost:8080',  # for localhost (REACT Default)
+'http://192.168.1.250:8080', # for network
+)
 
 # Application definition
 
@@ -38,10 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'drf_yasg',
     'applications.animal',
     'applications.treatment',
-    'rest_framework',
-    'drf_yasg',
+    
 ]
 
 MIDDLEWARE = [
@@ -52,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'miGanadoSoft.urls'
