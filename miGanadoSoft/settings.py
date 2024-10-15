@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'applications.animal',
     'applications.treatment',
+    'applications.users',
     
 ]
 

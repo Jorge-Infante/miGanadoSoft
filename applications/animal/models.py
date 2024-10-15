@@ -5,7 +5,7 @@ from applications.treatment.models import Treatment
 class Species(models.Model):
     name = models.CharField(max_length=50)
     class Meta:
-        verbose_name_plural = 'Especie'
+        verbose_name_plural = 'Species'
     def __str__(self) -> str:
         return str(self.id)+self.name
     
@@ -17,6 +17,10 @@ class Breed(models.Model):
     
 class Status(models.Model):
     name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = "Status"
+
     def __str__(self) -> str:
         return str(self.id) + self.name
 
@@ -31,5 +35,5 @@ class Animal(models.Model):
     file = models.FileField(upload_to='uploads/',null=True, blank=True)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     def __str__(self) -> str:
-        return str(self.id)+self.name
+        return str(self.id)+ ' ' + self.name
 
