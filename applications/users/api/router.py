@@ -11,14 +11,15 @@ router_user.register(
     prefix='users', basename='users', viewset=UserApiViewSet
 )
 router_user.register(
+    prefix='companies', basename='companies', viewset=CompanyViewSet
+)
+router_user.register(
     prefix='groups', basename='groups', viewset=GroupViewSet
 )
 router_user.register(
     prefix='permissions', basename='permisions', viewset=PermissionViewSet
 )
-router_user.register(
-    prefix='companies', basename='companies', viewset=CompanyViewSet
-)
+
 
 urlpatterns = [
     path('auth/me/', UserView.as_view()),
